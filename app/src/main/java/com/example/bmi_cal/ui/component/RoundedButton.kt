@@ -1,5 +1,6 @@
 package com.example.bmi_cal.ui.component
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,7 +28,8 @@ fun RoundedButton(
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(4.dp),
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor,
             contentColor = contentColor
