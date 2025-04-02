@@ -1,15 +1,13 @@
 package com.example.bmi_cal.ui.component
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -23,8 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bmi_cal.utils.BmiCalculator
 import com.example.compose.BMICalTheme
-import com.example.compose.outlineLight
-import com.example.compose.surfaceContainerLight
 
 @Composable
 fun ResultCard(
@@ -33,15 +29,12 @@ fun ResultCard(
     modifier: Modifier = Modifier,
 ){
     val bmiState = remember { mutableStateOf(BmiCalculator(height, weight)) }
-    OutlinedCard(
+    Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(20.dp)
             .size(width = 200.dp, height = 100.dp),
-        shape = RoundedCornerShape(2.dp),
-        colors = CardDefaults.cardColors(surfaceContainerLight),
+        shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(2.dp),
-        border = BorderStroke(width = 1.dp, color = outlineLight)
     ){
         Column(
             modifier = Modifier
