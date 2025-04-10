@@ -13,6 +13,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +25,9 @@ import com.example.bmi_cal.ui.component.RoundedCard
 import com.example.compose.BMICalTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import com.example.bmi_cal.ui.component.HeightSelector
 import com.example.bmi_cal.ui.component.PickerView
 import com.example.bmi_cal.ui.component.ResultCard
 import com.example.bmi_cal.ui.component.RoundedButton
@@ -46,25 +49,19 @@ fun HomeScreen(){
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Content(paddingValues: PaddingValues){
+    val showResult = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .padding(paddingValues)
             .padding(horizontal = 12.dp)
             .fillMaxSize(),
     ) {
-        val heightState = remember { mutableIntStateOf(170) }
+        val heightState: MutableState<Int> = remember { mutableIntStateOf(170) }
         val weightState: MutableState<Int> = remember { mutableIntStateOf(62) }
         val ageState: MutableState<Int> = remember { mutableIntStateOf(20) }
-        ResultCard(
-            height = heightState.value,
-            weight = weightState.value,
-        )
-
-
-        Spacer(Modifier.height(16.dp))
-
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -92,6 +89,12 @@ private fun Content(paddingValues: PaddingValues){
 
         Spacer(Modifier.height(16.dp))
 
+        HeightSelector(
+            heightState = heightState
+        )
+
+        Spacer(Modifier.height(16.dp))
+
         PickerView(
             heightState = heightState,
             weightState = weightState,
@@ -100,12 +103,22 @@ private fun Content(paddingValues: PaddingValues){
 
         Spacer(Modifier.height(16.dp))
 
+        if (showResult.value){
+            ResultCard(
+                height = heightState.value,
+                weight = weightState.value,
+                setShowResult = {
+                    showResult.value = it
+                }
+            )
+        }
+
         RoundedButton(
             modifier = Modifier
                 .fillMaxWidth(),
             text = "Calculate",
             onClick = {
-
+                showResult.value = true
             }
         )
     }

@@ -31,7 +31,7 @@ fun NumberPicker(
 ){
     Card(
         modifier = Modifier
-            .size(width = 180.dp, height = 150.dp),
+            .size(width = 150.dp, height = 180.dp),
         shape = RoundedCornerShape(4.dp)
     ) {
         Column(

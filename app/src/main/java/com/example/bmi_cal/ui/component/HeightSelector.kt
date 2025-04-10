@@ -11,18 +11,21 @@ import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compose.onSurfaceLight
 
 @Composable
-private fun HeightSelector(
+fun HeightSelector(
     modifier: Modifier = Modifier,
     heightState: MutableState<Int>
 ){
@@ -69,4 +72,12 @@ private fun HeightSelector(
 
         }
     }
+}
+
+@Preview
+@Composable
+private fun HeightSelectorPrev(){
+    HeightSelector(
+        heightState = remember { mutableIntStateOf(170) }
+    )
 }
