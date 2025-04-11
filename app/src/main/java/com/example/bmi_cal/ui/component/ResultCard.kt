@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -28,7 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.bmi_cal.utils.BmiCalculator
-import com.example.compose.BMICalTheme
+import com.example.compose.color03
+import com.example.compose.color09
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,6 +48,10 @@ fun ResultCard(
                 .fillMaxWidth()
                 .height(200.dp)
                 .padding(16.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = color03,
+                contentColor = color09
+            ),
             shape = RoundedCornerShape(16.dp),
         ){
             Column(

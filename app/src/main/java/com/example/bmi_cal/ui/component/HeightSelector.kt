@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
@@ -22,7 +23,9 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.compose.onSurfaceLight
+import com.example.compose.color03
+import com.example.compose.color05
+import com.example.compose.color09
 
 @Composable
 fun HeightSelector(
@@ -39,7 +42,8 @@ fun HeightSelector(
     }
 
     Card (
-        modifier = Modifier
+        modifier = Modifier,
+        colors = CardDefaults.cardColors(color03)
     ) {
         Column(
             modifier = Modifier
@@ -54,8 +58,8 @@ fun HeightSelector(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Height", fontSize = 18.sp)
-                Text(text = height, fontSize = 18.sp)
+                Text(text = "Height", fontSize = 24.sp, color = color09, fontWeight = FontWeight.SemiBold)
+                Text(text = height, fontSize = 18.sp, color = color09)
             }
 
             Slider(
@@ -66,7 +70,9 @@ fun HeightSelector(
                     .padding(8.dp),
                 valueRange = (1f..272f),
                 colors = SliderDefaults.colors(
-                    activeTrackColor = onSurfaceLight
+                    thumbColor = color09,
+                    activeTrackColor = color09,
+                    inactiveTrackColor = color05
                 )
             )
 

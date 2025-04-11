@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.bmi_cal.R
 import com.example.compose.BMICalTheme
+import com.example.compose.color04
 import com.example.compose.surfaceContainerHighestLight
 
 private val IconButtonSizeModifier = Modifier.size(48.dp)
@@ -28,7 +29,6 @@ fun RoundedIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     tint: Color = Color.Black.copy(alpha = 0.8f),
-    backgroundColor: Color = surfaceContainerHighestLight,
     elevation: Dp = 2.dp
 ){
     Card(
@@ -36,7 +36,7 @@ fun RoundedIconButton(
             .clickable(onClick = onClick)
             .then(IconButtonSizeModifier),
         shape = CircleShape,
-        colors = CardDefaults.cardColors(containerColor = backgroundColor),
+        colors = CardDefaults.cardColors(color04),
         elevation = CardDefaults.cardElevation(defaultElevation = elevation)
     ) {
         Icon(

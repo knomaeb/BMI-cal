@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -21,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bmi_cal.R
+import com.example.compose.color03
+import com.example.compose.color09
 
 @Composable
 fun NumberPicker(
@@ -32,6 +35,7 @@ fun NumberPicker(
     Card(
         modifier = Modifier
             .size(width = 150.dp, height = 180.dp),
+        colors = CardDefaults.cardColors(color03),
         shape = RoundedCornerShape(4.dp)
     ) {
         Column(
@@ -44,13 +48,15 @@ fun NumberPicker(
                 text = label,
                 modifier = Modifier,
                 fontSize = 25.sp,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
+                color = color09
             )
             Text(
                 text = pickerState.value.toString(),
                 modifier = Modifier,
                 fontSize = 20.sp,
-                fontWeight = FontWeight.Medium
+                fontWeight = FontWeight.Medium,
+                color = color09
             )
 
             Row(
@@ -58,16 +64,17 @@ fun NumberPicker(
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                RoundedIconButton(imageIcon = painterResource(R.drawable.add_icon), onClick = {
-                    if (pickerState.value < range.last){
-                        pickerState.value++
-                    }
-                })
                 RoundedIconButton(imageIcon = painterResource(R.drawable.remove_icon), onClick = {
                     if (pickerState.value > range.first) {
                         pickerState.value--
                     }
                 })
+                RoundedIconButton(imageIcon = painterResource(R.drawable.add_icon), onClick = {
+                    if (pickerState.value < range.last){
+                        pickerState.value++
+                    }
+                })
+
             }
 
         }
